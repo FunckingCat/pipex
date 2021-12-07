@@ -6,7 +6,7 @@
 #    By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/07 10:51:47 by tyamcha          ###   ########.fr        #
+#    Updated: 2021/12/07 12:03:19 by tyamcha          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS =
 
 HEADER = pipex.h
 
-COMMON = 
+COMMON = ft_error.c
 MAIN = pipex.c 
 BONUS = 
 
