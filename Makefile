@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+         #
+#    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/07 12:03:19 by tyamcha          ###   ########.fr        #
+#    Updated: 2021/12/07 20:57:15 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS =
 
 HEADER = pipex.h
 
-COMMON = ft_error.c
+COMMON = ft_error.c ft_validate.c ft_putstr_fd.c
 MAIN = pipex.c 
 BONUS = 
 
