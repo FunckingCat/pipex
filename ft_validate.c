@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 20:22:10 by unix              #+#    #+#             */
-/*   Updated: 2021/12/09 18:34:53 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/09 18:47:33 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void	open_descriptors(int ac, char **av, int *arr)
 	check_file(av[ac - 1], 2, 0);
 	arr[0] = open(av[0], O_RDONLY);
 	arr[1] = open(av[ac - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
-	printf("Files OK\n");
 }

@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/09 18:31:08 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/09 19:01:43 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <sys/wait.h>
+
+typedef struct s_env
+{
+	int		ac;
+	char	**av;
+	char	**ep;
+	int		*inout;
+}	t_env;
 
 void	error(char *name, char *desc);
 void	open_descriptors(int ac, char **av, int *arr);

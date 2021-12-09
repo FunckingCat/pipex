@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/09 18:35:20 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/09 19:09:42 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,17 @@ void run(char *comand, char **envp)
 		i++;
 	}
 	error(ac[0], "command not found");
-	exit(EXIT_FAILURE);
+}
+
+void	proc(t_env env, int *n, int *prevpip)
+{
+	int		pip[2];
+	pid_t	fork_cmd;
+	
+	if (pipe(pip) == -1)
+		error("pipe", "failed create a pipe");
+	
+	
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -55,14 +65,24 @@ int	main(int argc, char **argv, char **envp)
 	int		status2;
 	pid_t	fork_cmd1;
 	pid_t	fork_cmd2;
+	t_env	*env;
 
 	if (argc != 5)
 		error("usage", "file1 cmd1 cmd2 file2");
 		
 	open_descriptors(argc - 1, argv + 1, inout);
 
+	env = malloc(sizeof(t_env));
+	if (!env)
+		error("malloc", "cant alloc mem");
+	env->ac = argc;
+	env->av = argv;
+	env->ep = envp;
+	env->inout = inout;
+
 	if (pipe(pip) == -1)
 		error("pipe", "failed create a pipe");
+
 	fork_cmd1 = fork();
 	if (fork_cmd1 == -1)
 		error("fork", "fork failed");
@@ -87,18 +107,14 @@ int	main(int argc, char **argv, char **envp)
 	}
 	
 	close(pip[1]);
-	//close(inout[0]);
-	//close(inout[1]);
+	close(inout[0]);
+	close(inout[1]);
 	waitpid(fork_cmd1, &status1, 0);
 	waitpid(fork_cmd2, &status2, 0);
 	if (status1 || status2)
-	{
-        printf("Error\n");
-    }
-    else
-	{
-        printf("Exited Normally\n");
-    }
+		printf("Error\n");
+	else
+		printf("Exited Normally\n");
 	printf("Parent %d %d\n", status1, status2);
 	return (0);
 }
