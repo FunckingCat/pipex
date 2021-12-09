@@ -6,7 +6,7 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/07 20:57:15 by unix             ###   ########.fr        #
+#    Updated: 2021/12/09 16:24:23 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS =
 
 HEADER = pipex.h
 
-COMMON = ft_error.c ft_validate.c ft_putstr_fd.c
+COMMON = ft_error.c ft_validate.c ft_putstr_fd.c ft_split.c
 MAIN = pipex.c 
 BONUS = 
 
