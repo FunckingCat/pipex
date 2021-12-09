@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/07 20:53:20 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/09 15:16:01 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/wait.h>
 
 void	error(char *text);
-void	validate(int ac, char **av);
+void	open_descriptors(int ac, char **av, int *arr);
 void	ft_putstr_fd(char *s, int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/07 20:35:55 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/09 15:26:37 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,25 @@ void	cmd2(int f2, char *cmd)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int		dscr[2];
+	int		pip[2];
+	int		inout[2];
 	pid_t	fork_cmd1;
 	pid_t	fork_cmd2;
 
-	// if (argc != 5)
-	// 	error("Error\nUsage: ./pipex infile \"cmd1\" \"cmd2\" outfile");
-	validate(argc - 1, argv + 1);
-	// if (pipe(dscr) == -1)
+	if (argc != 5)
+		error("Error\nUsage: ./pipex infile \"cmd1\" \"cmd2\" outfile");
+		
+	open_descriptors(argc - 1, argv + 1, inout);
+	
+	// if (pipe(pip) == -1)
 	// 	error("PIPE Error");
 	// fork_cmd1 = fork();
 	// if (fork_cmd1 == -1)
 	// 	error("FORK Error");
 	// else if (fork_cmd1 == 0)
 	// {
-	// 	close(dscr[0]);
-	// 	dup2(dscr[1], STDOUT_FILENO);
+	// 	close(pip[0]);
+	// 	dup2(pip[1], STDOUT_FILENO);
 	// 	cmd1(0, NULL);
 	// }
 
@@ -58,13 +61,13 @@ int	main(int argc, char **argv, char **envp)
 	// 	error("FORK Error");
 	// else if (fork_cmd2 == 0)
 	// {
-	// 	close(dscr[1]);
-	// 	dup2(dscr[0], STDIN_FILENO);
+	// 	close(pip[1]);
+	// 	dup2(pip[0], STDIN_FILENO);
 	// 	wait(&fork_cmd1);
 	// 	cmd2(0, NULL);
 	// }
 	
-	// close(dscr[1]);
+	// close(pip[1]);
 	// wait(&fork_cmd1);
 	// wait(&fork_cmd2);
 	// printf("Parent\n");
