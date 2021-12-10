@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 11:09:45 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 16:09:40 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 16:18:52 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_receive_heredoc(t_env *env)
 	env->commands[0].in = pip[0];
 	while (1)
 	{
-		ft_putstr_fd("heredoc> ", 1);
+		ft_putstr_fd("> ", 1);
 		line = get_next_line(0);
 		if (!line)
 			break ;
