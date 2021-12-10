@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 12:46:46 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 14:00:24 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 14:23:02 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,20 @@ void	exec(t_command *cmd, t_env *env)
 		error("dup2", "dup failed");
 	close_descriptors(env);
 	run(cmd->arg, env->ep);
+}
+
+void	fork_proc(t_env *env)
+{
+	int	i;
+
+	i = 0;
+	while (i < env->cmds)
+	{
+		env->pids[i] = fork();
+		if (env->pids[i] == -1)
+			error("fork", "fork failed");
+		else if (env->pids[i] == 0)
+			exec(&env->commands[i], env);
+		i++;
+	}
 }

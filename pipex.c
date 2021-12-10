@@ -6,11 +6,21 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/10 13:59:13 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 14:26:17 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	error(char *name, char *desc)
+{
+	ft_putstr_fd("pipex: ", 2);
+	ft_putstr_fd(name, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(desc, 2);
+	ft_putstr_fd("\n", 2);
+	exit(EXIT_FAILURE);
+}
 
 t_command	*who_returned(t_env *env, pid_t pid)
 {

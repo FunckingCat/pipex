@@ -6,7 +6,7 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/10 13:57:05 by unix             ###   ########.fr        #
+#    Updated: 2021/12/10 14:34:36 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIB = -L '.' -lft
 
 HEADER = pipex.h
 
-MAIN_FILES = pipex.c ft_env.c ft_fork_proc.c ft_exec.c ft_error.c ft_open_in_out.c
+MAIN_FILES = pipex.c ft_env.c ft_exec.c
 
 MAIN_OBJ_FILES = $(MAIN_FILES:.c=.o)
 
