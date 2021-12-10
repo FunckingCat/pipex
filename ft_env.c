@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 11:09:45 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 12:50:27 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 13:37:58 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_env	*make_env(int argc, char **argv, char **envp)
 	int		i;
 
 	open_descriptors(argc - 1, argv + 1, inout);
-
 	env = malloc(sizeof(t_env));
 	if (!env)
 		error("malloc", "cant alloc mem");

@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 12:46:46 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 13:22:34 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 13:42:15 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*full_path(char *path, char *name)
 {
 	char *tmp;
 	char *res;
-	
+	if (name[0] == '/')
+		return (name);
 	if (path[ft_strlen(path) - 1] != '/')
 	{
 		tmp = ft_strjoin(path, "/");
