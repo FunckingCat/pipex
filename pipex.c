@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/10 14:37:11 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 15:36:20 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc < 4)
 		error("too few args", "usage ./pipex ./in \"cmd1\" \"cmd2\" ./out");
-	env = make_env(argc, argv, envp);
+	env = make_env(argc - 1, argv + 1, envp);
 	fork_proc(env);
 	wait_children(env);
 	free(env->pids);
