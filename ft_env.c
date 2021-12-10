@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 11:09:45 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 15:39:33 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 15:40:53 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	set_in_out(t_env *env, char **argv)
 	int		i;
 	int		pip[2];
 
+	env->commands[0].arg = argv[1];
 	i = 1;
 	while (i < env->cmds)
 	{
@@ -62,7 +63,6 @@ t_env	*make_env(int argc, char **argv, char **envp)
 	env->ep = envp;
 	env->pids = malloc(sizeof(pid_t) * env->cmds);
 	env->commands = malloc(sizeof(t_command) * env->cmds);
-	env->commands[0].arg = argv[1];
 	open_descriptors(argc, argv, env);
 	set_in_out(env, argv);
 	return (env);
