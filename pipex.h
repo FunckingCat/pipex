@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/09 19:01:43 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 13:19:36 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,22 @@
 # include <unistd.h>
 # include <sys/wait.h>
 
+typedef struct s_command
+{
+	char	*arg;
+	int		in;
+	int		out;
+}	t_command;
+
 typedef struct s_env
 {
-	int		ac;
-	char	**av;
-	char	**ep;
-	int		*inout;
+	int			cmds;
+	t_command	*commands;
+	char		**ep;
+	pid_t		*pids;
 }	t_env;
+
+t_env	*make_env(int argc, char **argv, char **envp);
 
 void	error(char *name, char *desc);
 void	open_descriptors(int ac, char **av, int *arr);
@@ -34,5 +43,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
+void	fork_proc(t_env *env);
+void	exec(t_command *cmd, t_env *env);
 
 #endif
