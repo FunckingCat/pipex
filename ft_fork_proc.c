@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 12:45:48 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 13:23:50 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 13:59:40 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	fork_proc(t_env *env)
 		if (env->pids[i] == -1)
 			error("fork", "fork failed");
 		else if (env->pids[i] == 0)
-		{
 			exec(&env->commands[i], env);
-		}
 		i++;
 	}
 }
