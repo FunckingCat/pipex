@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:39:28 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 15:45:46 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/10 16:15:09 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ char	*ft_getres(char *rd)
 	if (!res)
 		return (NULL);
 	ft_memmove(res, rd, i);
-	if (rd[i] == '\n')
-		res[i++] = '\n';
 	res[i] = '\0';
 	return (res);
 }
