@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:20:53 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/10/13 15:58:09 by tyamcha          ###   ########.fr       */
+/*   Updated: 2021/12/10 15:43:26 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+
+char	*get_next_line(int fd);
 
 int		ft_isalpha(int ch);
 int		ft_isdigit(int ch);
