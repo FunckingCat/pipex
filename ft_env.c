@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 11:09:45 by unix              #+#    #+#             */
-/*   Updated: 2021/12/11 11:09:50 by tyamcha          ###   ########.fr       */
+/*   Updated: 2021/12/11 11:36:04 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	open_descriptors(int ac, char **av, t_env *env)
 		check_file(av[ac - 2], 2, 0);
 		ft_receive_heredoc(env);
 		env->commands[env->cmds - 1].out = open(av[ac - 2],
-				O_APPEND | O_WRONLY | O_CREAT, 0666);
+				O_APPEND | O_WRONLY | O_CREAT, 0644);
 	}
 	else
 	{
@@ -71,7 +71,7 @@ void	open_descriptors(int ac, char **av, t_env *env)
 		check_file(av[ac - 1], 2, 0);
 		env->commands[0].in =open(av[0], O_RDONLY);
 		env->commands[env->cmds - 1].out = open(av[ac - 1],
-				O_TRUNC | O_WRONLY | O_CREAT, 0666);
+				O_TRUNC | O_WRONLY | O_CREAT, 0644);
 	}
 }
 
