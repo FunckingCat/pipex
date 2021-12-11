@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/11 10:56:19 by tyamcha          ###   ########.fr       */
+/*   Updated: 2021/12/11 13:10:49 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,6 @@ void	wait_children(t_env *env)
 	}
 }
 
-void pr(t_env *env)
-{
-	for (int i = 0; i < env->cmds; i++)
-	{
-		printf("%s\n", env->commands[i].arg);
-		printf("%d %d\n", env->commands[i].in, env->commands[i].out);
-	}
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_env	*env;
@@ -74,11 +65,8 @@ int	main(int argc, char **argv, char **envp)
 	if (argc < 4)
 		error("too few args", "usage ./pipex ./in \"cmd1\" \"cmd2\" ./out");
 	env = make_env(argc - 1, argv + 1, envp);
-	pr(env);
 	fork_proc(env);
 	wait_children(env);
-	for (int i = 0; i < env->cmds; i++)
-		printf("%d\n", env->pids[i]);
 	free(env->pids);
 	free(env->commands);
 	free(env);
