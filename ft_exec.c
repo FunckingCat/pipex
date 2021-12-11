@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 12:46:46 by unix              #+#    #+#             */
-/*   Updated: 2021/12/11 11:45:48 by tyamcha          ###   ########.fr       */
+/*   Updated: 2021/12/11 13:15:30 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	close_descriptors(t_env *env)
 
 void	exec(t_command *cmd, t_env *env)
 {
-	if (dup2(cmd->in, 0) == -1  || dup2(cmd->out, 1) == -1)
+	if (dup2(cmd->in, 0) == -1 || dup2(cmd->out, 1) == -1)
 		error("dup2", "dup failed");
 	close_descriptors(env);
 	run(cmd->arg, env->ep);

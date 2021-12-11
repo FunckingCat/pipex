@@ -6,22 +6,20 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 11:09:45 by unix              #+#    #+#             */
-/*   Updated: 2021/12/11 11:36:04 by tyamcha          ###   ########.fr       */
+/*   Updated: 2021/12/11 13:23:32 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_receive_heredoc(t_env *env)
+void	ft_receive_heredoc(t_env *env, int *pip)
 {
 	char	*line;
-	int		pip[2];
 
-	pipe(pip);
 	env->commands[0].in = pip[0];
 	while (1)
 	{
-		ft_putstr_fd("> ", 1);
+		ft_putstr_fd("heredoc> ", 1);
 		line = get_next_line(0);
 		if (!line)
 			break ;
@@ -30,8 +28,6 @@ void	ft_receive_heredoc(t_env *env)
 			free(line);
 			break ;
 		}
-		if (!ft_strcmp(line, ""))
-			ft_putstr_fd("\n", 1);
 		else
 		{
 			ft_putstr_fd(line, pip[1]);
@@ -58,10 +54,14 @@ void	check_file(char *file_path, int mode, int err)
 
 void	open_descriptors(int ac, char **av, t_env *env)
 {
+	int	pip[2];
+
+	if (pipe(pip) == -1)
+		error("pipe", "failed create a pipe");
 	if (env->doc)
 	{
 		check_file(av[ac - 2], 2, 0);
-		ft_receive_heredoc(env);
+		ft_receive_heredoc(env, pip);
 		env->commands[env->cmds - 1].out = open(av[ac - 2],
 				O_APPEND | O_WRONLY | O_CREAT, 0644);
 	}
@@ -69,7 +69,7 @@ void	open_descriptors(int ac, char **av, t_env *env)
 	{
 		check_file(av[0], 4, 1);
 		check_file(av[ac - 1], 2, 0);
-		env->commands[0].in =open(av[0], O_RDONLY);
+		env->commands[0].in = open(av[0], O_RDONLY);
 		env->commands[env->cmds - 1].out = open(av[ac - 1],
 				O_TRUNC | O_WRONLY | O_CREAT, 0644);
 	}
