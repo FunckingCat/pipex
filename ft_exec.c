@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 12:46:46 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 14:23:02 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/11 11:28:04 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,17 @@ void	run(char *comand, char **envp)
 	char	**ac;
 	char	**path;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	ac = ft_split(comand, ' ');
-	while (*(envp[20])++ != '=')
-		;
-	path = ft_split(envp[20], ':');
+	while (ft_strncmp("PATH", envp[j], 4))
+		j++;
+	while (*(envp[j]) != '=')
+		envp[j]++;
+	envp[j]++;
+	path = ft_split(envp[j], ':');
 	while (path[i] != NULL)
 	{
 		execve(full_path(path[i], ac[0]), ac, envp);
@@ -65,7 +70,7 @@ void	close_descriptors(t_env *env)
 
 void	exec(t_command *cmd, t_env *env)
 {
-	if (dup2(cmd->in, 0) == -1 || dup2(cmd->out, 1) == -1)
+	if (dup2(cmd->in, 0) == -1  || dup2(cmd->out, 1) == -1)
 		error("dup2", "dup failed");
 	close_descriptors(env);
 	run(cmd->arg, env->ep);

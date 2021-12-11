@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:39:28 by unix              #+#    #+#             */
-/*   Updated: 2021/12/10 16:15:09 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/11 10:24:45 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_getres(char *rd)
 	res = malloc(i + 2);
 	if (!res)
 		return (NULL);
-	ft_memmove(res, rd, i);
+	ft_memm(res, rd, i);
 	res[i] = '\0';
 	return (res);
 }
@@ -71,7 +71,7 @@ char	*ft_get_buffer(int fd, char *buffer)
 		tmp = buffer;
 		buffer = ft_strjo(tmp, buf);
 		free(tmp);
-		if (ft_strchr(buffer, '\n'))
+		if (ft_strch(buffer, '\n'))
 		{
 			break ;
 		}

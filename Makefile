@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
+#    By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/10 14:34:36 by unix             ###   ########.fr        #
+#    Updated: 2021/12/11 10:29:56 by tyamcha          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 BONUS_NAME = pipex_bonus
 CC = gcc
-FLAGS = 
-#FLAGS = -Wall -Werror -Wextra
+#FLAGS = 
+FLAGS = -Wall -Werror -Wextra
 LIB = -L '.' -lft 
 
 HEADER = pipex.h
